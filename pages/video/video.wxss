@@ -43,6 +43,8 @@
 /* 视频列表 */
 .videoScroll {
   margin-top: 10rpx;
+  /* 使用calc动态计算高度 */
+  height: calc(100vh - 152rpx);
 }
 
 .videoItem {

@@ -17,12 +17,12 @@
     </view>
   </scroll-view>
   <!-- 视频列表区域 -->
-  <scroll-view class="vedioScroll" scroll-y="true">
+  <scroll-view class="videoScroll" scroll-y refresher-enabled="true" bindrefresherrefresh="handleRefresher" refresher-triggered="{{isTriggered}}" bindscrolltolower="handleToLower">
     <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-      <video id="{{item.data.vid}}" class="common" poster="{{item.data.previewUrl}}" custom-cache="false" bindplay="handlePlay" src="{{item.data.urlInfo}}"></video>
+      <video src="{{item.data.urlInfo}}" wx:if="{{videoId === item.data.vid}}" id="{{item.data.vid}}" class="common" object-fit="fill" poster="{{item.data.previewUrl}}" bindplay="handlePlay" autoplay bindtimeupdate="handleTimeUpdate" bindended="handleEnded"></video>
 
       <!-- 性能优化：使用image图片代替video标签 -->
-      <image id="{{item.data.id}}" class="common" custom-cache="false" src="{{item.data.coverUrl}}" bindtap="handlePlay"></image>
+      <image wx:else id="{{item.data.vid}}" class="common" src="{{item.data.coverUrl}}" bindtap="handlePlay"></image>
       <view class="content">{{item.data.title}}</view>
 
       <view class="footer">
