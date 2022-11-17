@@ -45,6 +45,19 @@ Page({
       recommendList: res.data.dailySongs
     })
   },
+  // 跳转至当前音乐的详情页
+  toSongDetail(event) {
+    let song = event.currentTarget.dataset.song;
+    /* 
+      // 使用本地存储的方式
+      // wx.setStorageSync("songDetail", JSON.stringify(song));
+    */
+    wx.navigateTo({
+      // 由于query参数长度有限制，不能直接将整个歌曲列表转成字符初传过去，
+      // 所以只传过去当前歌曲的id，然后歌曲详情页根据歌曲的id发送请求获得歌曲信息。
+      url: '/pages/songDetail/songDetail?songId=' + song.id,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

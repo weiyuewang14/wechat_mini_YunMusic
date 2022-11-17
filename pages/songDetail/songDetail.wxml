@@ -1,0 +1,22 @@
+<!--pages/songDetail.wxml-->
+<view class="songDetailContainer">
+  <!--摇杆区域 -->
+  <view class="singer">{{songDetail.ar[0].name}}</view>
+  <view class="circle"></view>
+  <image class="needle {{ isPlay && 'needleRotate'}}" src="/static/images/song/needle.png"></image>
+  <!-- 磁盘区域 -->
+  <view class="discContainer {{ isPlay && 'discAnimation'}}">
+    <image class="disc" src="/static/images/song/disc.png"></image>
+    <image class="musicImg" src="{{songDetail.al.picUrl}}"></image>
+  </view>
+
+  <view class="free"></view>
+  <!-- 播放按钮区域 -->
+  <view class="musicControl">
+    <text class="iconfont icon-24gl-repeat2"></text>
+    <text class="iconfont icon-shangyishou" id="pre" bindtap="handleSwitch"></text>
+    <text class="iconfont {{isPlay?'icon-bofangzhong':'icon-shipinbofangshibofang'}} big" bindtap="handleMusicPlay"></text>
+    <text class="iconfont icon-kuaijin" id="next" bindtap="handleSwitch"></text>
+    <text class="iconfont icon-24gf-playlistMusic2"></text>
+  </view>
+</view>
